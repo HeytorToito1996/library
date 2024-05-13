@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+        <form id="updateForm" action="/books/update/{{book.bookId}}" method="post">
+        <div class="field">
+            <label class="label">Título</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Título do Livro" value="{{book.title}}" name="title">
+            </div>
+          </div>
+          
+          <div class="field">
+            <label class="label">Autor : </label>
+              <input class="input" type="text" placeholder="Autor do Livro..." value="{{book.author}}" name="author">
+          </div>
+           
+          <div class="field">
+            <label class="label">Gênero</label>
+              <input class="input" type="text" placeholder="Gênero do Livro..." value="{{book.genre}}" name="genre">
+          </div>
+
+          <div class="field">
+            <label class="label">Quantidade</label>
+              <input class="number" type="text" placeholder="Quantidade Disponível" value="{{book.quantity}}" name="quantity">
+          </div>
+
+          <div class="field">
+            <label class="label">Prateleira</label>
+              <input class="number" type="text" placeholder="Prateleira" value="{{book.shelf}}" name="shelf">
+          </div>
+
+          <input type="hidden" name="bookId" value="{{book.bookId}}">
+          
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" onclick="updateBook()">Submit</button>
+            </div>
+            
+          </div>
+        </form>  
+    </div>
+  </section>
+  
+  </body>
+</html>

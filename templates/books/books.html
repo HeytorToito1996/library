@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+   <form action="/books/search/" method="get">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <input class="input" type="text" placeholder="Pesquisar" name="search">
+      </div>
+      <div class="control">
+        <button class="button is-info" type="submit">Pesquisar</button>
+      </div>
+    </div>
+   </form> 
+  <section class="section">
+    <div class="container">
+        <center><h1>Catálogo de Livros</h1></center>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código do Livro</th>
+                    <th>Gênero</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Quantidade Disponível</th>
+                    <th>Prateleira</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            {% for book in books %}
+            {% if book is none %}
+            <tr>
+                <td colspan="7">Nenhum livro encontrado</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>{{book.bookId}}</td>
+                <td>{{book.genre}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.quantity}}</td>
+                <td>{{book.shelf}}</td>
+                <td><a href="update/{{book.bookId}}"><button class="button is-warning">Atualizar Livro</button></a></td>
+                <td><a href="delete/{{book.bookId}}"><button class="button is-danger">Excluir Livro</button></a></td>
+            </tr>
+            {% endfor %} 
+        </table>
+        <a href="/books/create"><button class="button is-success">Cadastrar novo livro</button></a>
+    </div>
+  </section>
+  </body>
+</html>
